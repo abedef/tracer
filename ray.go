@@ -32,7 +32,7 @@ func (r Ray) Color() color.RGBA {
 	t := r.HitSphere(Vec3{0, 0, -1}, 0.5)
 	if t > 0.0 {
 		n := r.At(t).Subtract(Vec3{0, 0, -1}).Unit()
-		return color.RGBA{uint8(n.x * 0xff), uint8(n.y * 0xff), uint8(n.z * 0xff), 0xff}
+		return color.RGBA{uint8((n.x*0xff + 0xff) / 2), uint8((n.y*0xff + 0xff) / 2), uint8((n.z*0xff + 0xff) / 2), 0xff}
 	}
 
 	t = 0.5 * (r.direction.Unit().y + 1.0)
